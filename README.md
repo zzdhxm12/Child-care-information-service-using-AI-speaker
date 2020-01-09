@@ -1,1 +1,68 @@
 # Child-care-information-service-using-AI-speaker
+
+## NUGU Play
+
+![image](https://user-images.githubusercontent.com/53864655/72047006-ed251800-32fc-11ea-97d3-2118a0065916.png)
+![image](https://user-images.githubusercontent.com/53864655/72047043-01691500-32fd-11ea-9002-80c3959c36f8.png)
+
+발화 모델 생성을 위하여 NUGU Play 서비스를 이용한다. Play는 NUGU 플랫폼의 엔진들과 통신해 서비스를 제공하는 단위로서, 사용자와 상호 작용하여 의도를 이해하고 그에 맞는 적절한 답변을 주거나 명령을 수행한다. 사용자와 Play가 음성 대화를 통해 상호 작용할 수 있도록 하는 언어모델을 User Utterance Model이라고 하며, Play는 이러한 모델을 통해 사용자의 발화를 이해하고 그 속에 담긴 요청/명령을 수행한다. User Utterance Model은 Play의 기능을 동작시키기 위해 표현하는 사용자 의도를 의미하는 Intent와 사용자의 요청을 정확히 처리하기 위해 Intent 외에 추가로 알아야 하는 개체인 Entity로 구성된다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 
+
+## Architecture
+
+![image](https://user-images.githubusercontent.com/53864655/72048298-d16f4100-32ff-11ea-8c9a-1164a1648d1e.png)
+
+Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 서비스와 연동되어 수행 된다. 응급처치(약), 예방 접종, 유아식 종류 및 재료, 나이 별 발달 사항과 같은 정적 콘텐츠일 경우, 데이터베이스에 저장된 정보를 제공한다. 이때, 데이터베이스에는 의사가 보장한 전문 사이트와 전문 서적을 통해 얻은 정보가 가공되어 저장되어 있다 [3]. 어린이 행사 일정과 같은 실시간 정보의 경우, cheerio-httpcli모듈을 사용하여 외부 서버에서 정보를 크롤링하여 제공한다. 
+
+## Usecase
+
+1. 응급처치 – 의약품 : 아이의 증상에 따라 적절한 의약품 추천
+
+* 1-1 주의가 필요한 의약품
+
+![image](https://user-images.githubusercontent.com/53864655/72047498-ffec1c80-32fd-11ea-962b-a586da31025c.png)
+
+* 1-2 일반적인 의약품
+
+![image](https://user-images.githubusercontent.com/53864655/72047759-99b3c980-32fe-11ea-89d3-d0b838d79e2b.png)
+
+2. 유아식 종류 및 재료 : 음식 재료를 바탕으로 적절한 유아식 메뉴 정보 제공
+
+![image](https://user-images.githubusercontent.com/53864655/72047629-59544b80-32fe-11ea-87b6-1dfbda82d513.png)
+
+3. 나이 별 발달 사항 : 아이의 나이에 따라 발달 사항 정보 제공
+
+* 3-1 필수 파라미터가 없는 경우
+
+![image](https://user-images.githubusercontent.com/53864655/72047857-cf58b280-32fe-11ea-92bc-7e2ad4e8f94a.png)
+
+* 3-2 필수 파라미터가 모두 있는 경우
+
+![image](https://user-images.githubusercontent.com/53864655/72047903-eb5c5400-32fe-11ea-9580-13e8be10e6cc.png)
+
+4. 예방 접종 시기 : 예방 접종 시기 정보 제공
+
+* 4-1. Parameter:나이 | Result:접종 종류
+
+![image](https://user-images.githubusercontent.com/53864655/72047963-13e44e00-32ff-11ea-9e5a-f0eba9408529.png)
+
+* 4-2. Parameter:접종 종류 | Result:나이
+
+![image](https://user-images.githubusercontent.com/53864655/72047993-1f377980-32ff-11ea-923a-434cbc494252.png)
+
+나이 Parameter : 1개월, 2개월, ..., 12세
+접종 종류 Parameter : 홍역, 수두, 디프테리아, 일본 뇌염, 파상풍, 폐렴구균, B형 간염, 풍진, 〮〮〮(중략) 
+
+5. 행사 : 날짜와 지역에 따라 어린이 행사 일정 제공
+
+* 5-1. 지역 : 필수 Parameter 포함 안된 경우
+
+![image](https://user-images.githubusercontent.com/53864655/72048086-5ad24380-32ff-11ea-8700-e1310d6ba48a.png)
+
+* 5-2. 날짜 : 필수 Parameter 포함 안된 경우
+
+![image](https://user-images.githubusercontent.com/53864655/72048139-78071200-32ff-11ea-8dd8-b46fd1df376b.png)
+
+* 5-3. 필수 파라미터가 모두 있는 경우
+
+![image](https://user-images.githubusercontent.com/53864655/72048206-9bca5800-32ff-11ea-8c12-4bcabeb8522e.png)
+
