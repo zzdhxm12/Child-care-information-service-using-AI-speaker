@@ -49,13 +49,8 @@ User Utterance Model은 Play의 기능을 동작시키기 위해 표현하는 �
 
 Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 서비스와 연동되어 수행 된다. 응급처치(약), 예방 접종, 유아식 종류 및 재료, 나이 별 발달 사항과 같은 정적 콘텐츠일 경우, 데이터베이스에 저장된 정보를 제공한다. 이때, 데이터베이스에는 의사가 보장한 전문 사이트와 전문 서적을 통해 얻은 정보가 가공되어 저장되어 있다. 어린이 행사 일정과 같은 실시간 정보의 경우, cheerio-httpcli모듈을 사용하여 외부 서버에서 정보를 크롤링하여 제공한다. 
 
-### Play 구조도
 
-![image](https://user-images.githubusercontent.com/53864655/72129570-0b9d1900-33ba-11ea-8aaf-7ae451651c2f.png)
-
-### Entity Types
-
-![image](https://user-images.githubusercontent.com/53864655/72129574-0f30a000-33ba-11ea-8ff4-77d491cbed8c.png)
+![image](https://user-images.githubusercontent.com/53864655/72129636-5880ef80-33ba-11ea-85cd-603d01dcaefe.png)
 
 
 ## Usecase
