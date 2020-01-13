@@ -37,7 +37,7 @@
 
 User Utterance Model은 Play의 기능을 동작시키기 위해 표현하는 사용자 의도를 의미하는 Intent와 사용자의 요청을 정확히 처리하기 위해 Intent 외에 추가로 알아야 하는 개체인 Entity로 구성된다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 
 
-![image](https://user-images.githubusercontent.com/53864655/72128857-96304900-33b7-11ea-9031-9794f420db65.png)
+![image](https://user-images.githubusercontent.com/53864655/72241071-304af800-3629-11ea-85c0-d21d5e6aa83f.png)
 
 위의 그림에서 time과 location이 Entity이며, “날씨 알려줘”와 같은 발화들이 Intent이다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 위 그림에서 "날씨는 ~~~ 합니다." 와 같은 응답을 Action이라고 칭한다. 
 
