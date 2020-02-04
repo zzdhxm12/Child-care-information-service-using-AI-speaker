@@ -108,3 +108,13 @@ Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 �
 
 ![image](https://user-images.githubusercontent.com/53864655/72048206-9bca5800-32ff-11ea-8c12-4bcabeb8522e.png)
 
+## Demo
+
+### 1. 응급처지 - 의약품
+ 
+[![Video Label](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/c7ETUpjz9Fk)
+
+### 2. 어린이 행사 
+
+[![Video Label](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/-d2lJQXJCq8)
+
