@@ -31,29 +31,6 @@
 
 * Backend에서 현재 개최되고 있는 어린이 행사를 크롤링하여 사용자에게 실시간 정보 제공
 
-## NUGU Play
-
-발화 모델 생성을 위하여 NUGU Play 서비스를 이용한다. Play는 NUGU 플랫폼의 엔진들과 통신해 서비스를 제공하는 단위로서, 사용자와 상호 작용하여 의도를 이해하고 그에 맞는 적절한 답변을 주거나 명령을 수행한다. 사용자와 Play가 음성 대화를 통해 상호 작용할 수 있도록 하는 언어모델을 User Utterance Model이라고 하며, Play는 이러한 모델을 통해 사용자의 발화를 이해하고 그 속에 담긴 요청/명령을 수행한다.
-
-User Utterance Model은 Play의 기능을 동작시키기 위해 표현하는 사용자 의도를 의미하는 Intent와 사용자의 요청을 정확히 처리하기 위해 Intent 외에 추가로 알아야 하는 개체인 Entity로 구성된다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 
-
-![image](https://user-images.githubusercontent.com/53864655/72241120-58d2f200-3629-11ea-8118-213a54c61426.png)
-
-위의 그림에서 time과 location이 Entity이며, “날씨 알려줘”와 같은 발화들이 Intent이다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 위 그림에서 "날씨는 ~~~ 합니다." 와 같은 응답을 Action이라고 칭한다. 
-
-## Architecture
-
-### 1. 시스템 구조도
-
-![image](https://user-images.githubusercontent.com/53864655/72048298-d16f4100-32ff-11ea-8c9a-1164a1648d1e.png)
-
-Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 서비스와 연동되어 수행 된다. 응급처치(약), 예방 접종, 유아식 종류 및 재료, 나이 별 발달 사항과 같은 정적 콘텐츠일 경우, 데이터베이스에 저장된 정보를 제공한다. 이때, 데이터베이스에는 의사가 보장한 전문 사이트와 전문 서적을 통해 얻은 정보가 가공되어 저장되어 있다. 어린이 행사 일정과 같은 실시간 정보의 경우, cheerio-httpcli모듈을 사용하여 외부 서버에서 정보를 크롤링하여 제공한다. 
-
-### 2. Play 설계
-
-![image](https://user-images.githubusercontent.com/53864655/72129636-5880ef80-33ba-11ea-85cd-603d01dcaefe.png)
-
-
 ## Usecase
 
 ### 1. 응급처치 – 의약품 : 아이의 증상에 따라 적절한 의약품 추천
@@ -107,6 +84,29 @@ Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 �
 * 필수 파라미터가 모두 있는 경우
 
 ![image](https://user-images.githubusercontent.com/53864655/72048206-9bca5800-32ff-11ea-8c12-4bcabeb8522e.png)
+
+## NUGU Play
+
+발화 모델 생성을 위하여 NUGU Play 서비스를 이용한다. Play는 NUGU 플랫폼의 엔진들과 통신해 서비스를 제공하는 단위로서, 사용자와 상호 작용하여 의도를 이해하고 그에 맞는 적절한 답변을 주거나 명령을 수행한다. 사용자와 Play가 음성 대화를 통해 상호 작용할 수 있도록 하는 언어모델을 User Utterance Model이라고 하며, Play는 이러한 모델을 통해 사용자의 발화를 이해하고 그 속에 담긴 요청/명령을 수행한다.
+
+User Utterance Model은 Play의 기능을 동작시키기 위해 표현하는 사용자 의도를 의미하는 Intent와 사용자의 요청을 정확히 처리하기 위해 Intent 외에 추가로 알아야 하는 개체인 Entity로 구성된다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 
+
+![image](https://user-images.githubusercontent.com/53864655/72241120-58d2f200-3629-11ea-8118-213a54c61426.png)
+
+위의 그림에서 time과 location이 Entity이며, “날씨 알려줘”와 같은 발화들이 Intent이다. Play에서는 하나의 Intent를 처리하기 위해 최소 등록 단위인 Action을 사용한다. Action이란 사용자가 목적 달성을 위해 Play에 발화한 것에 대한 응답을 미리 지정해 두는 것으로,  일반적으로 하나의 Intent에 대해 하나의 Action을 등록한다. 위 그림에서 "날씨는 ~~~ 합니다." 와 같은 응답을 Action이라고 칭한다. 
+
+## Architecture
+
+### 1. 시스템 구조도
+
+![image](https://user-images.githubusercontent.com/53864655/72048298-d16f4100-32ff-11ea-8c9a-1164a1648d1e.png)
+
+Play는 요청된 정보의 종류에 따라 데이터베이스 또는 외부 서비스와 연동되어 수행 된다. 응급처치(약), 예방 접종, 유아식 종류 및 재료, 나이 별 발달 사항과 같은 정적 콘텐츠일 경우, 데이터베이스에 저장된 정보를 제공한다. 이때, 데이터베이스에는 의사가 보장한 전문 사이트와 전문 서적을 통해 얻은 정보가 가공되어 저장되어 있다. 어린이 행사 일정과 같은 실시간 정보의 경우, cheerio-httpcli모듈을 사용하여 외부 서버에서 정보를 크롤링하여 제공한다. 
+
+### 2. Play 설계
+
+![image](https://user-images.githubusercontent.com/53864655/72129636-5880ef80-33ba-11ea-85cd-603d01dcaefe.png)
+
 
 ## Demo
 
